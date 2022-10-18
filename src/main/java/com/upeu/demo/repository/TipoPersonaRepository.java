@@ -4,11 +4,11 @@
  */
 package com.upeu.demo.repository;
 
-import com.upeu.demo.entity.Reporte;
+import com.upeu.demo.entity.TipoPersona;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReporteRepository extends CrudRepository<Reporte, Long>{
+public interface TipoPersonaRepository extends CrudRepository<TipoPersona, Long>{
     
 }

@@ -8,9 +8,9 @@ import com.upeu.demo.entity.Programa;
 import com.upeu.demo.repository.ProgramaRepository;
 import com.upeu.demo.service.ProgramaService;
 import java.util.List;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProgramaServiceImpl implements ProgramaService{

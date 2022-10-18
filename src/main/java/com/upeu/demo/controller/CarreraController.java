@@ -4,8 +4,8 @@
  */
 package com.upeu.demo.controller;
 
-import com.upeu.demo.entity.Reporte;
-import com.upeu.demo.service.ReporteService;
+import com.upeu.demo.entity.Carrera;
+import com.upeu.demo.service.CarreraService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -21,41 +21,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/reporte")
-@Api(value = "Microservicios de gestion de reporte", description ="Microservicio de reporte")
-public class ReporteController {
+@RequestMapping("/carrera")
+@Api(value = "Microservicios de gestion de carreras", description ="Microservicio de carreras")
+public class CarreraController {
 
     @Autowired
-    private ReporteService reporteService;
+    private CarreraService carreraService;
 
-    @ApiOperation(value="Lista de reporte")
+    @ApiOperation(value="Lista de carrera")
     @GetMapping("/all")
-    public List<Reporte> findAll() {
-        return reporteService.findAll();
+    public List<Carrera> findAll() {
+        return carreraService.findAll();
     }
 
-    @ApiOperation(value="Obtiene datos de reporte")
+    @ApiOperation(value="Obtiene datos de la carrera")
     @GetMapping("/{id}")
-    public ResponseEntity<Reporte> findById(@PathVariable Long id) {
-        Reporte reporte = reporteService.findById(id);
-        return ResponseEntity.ok(reporte);
+    public ResponseEntity<Carrera> findById(@PathVariable Long id) {
+        Carrera carrera = carreraService.findById(id);
+        return ResponseEntity.ok(carrera);
     }
 
-    @ApiOperation(value="Elimina un reporte")
+    @ApiOperation(value="Elimina una carrera")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
-        reporteService.deleteById(id);
+        carreraService.deleteById(id);
     }
 
-    @ApiOperation(value="Crea un reporte")
+    @ApiOperation(value="Crea una carrera")
     @PostMapping("/save")
-    public Reporte save(@RequestBody Reporte reporte) {
-        return reporteService.save(reporte);
+    public Carrera save(@RequestBody Carrera carrera) {
+        return carreraService.save(carrera);
     }
 
-    @ApiOperation(value="Modifica un reporte")
+    @ApiOperation(value="Modifica una carrera")
     @PutMapping("/update")
-    public Reporte update(@RequestBody Reporte reporte) {
-        return reporteService.save(reporte);
+    public Carrera update(@RequestBody Carrera carrera) {
+        return carreraService.save(carrera);
     }
 }

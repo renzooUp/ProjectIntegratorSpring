@@ -15,17 +15,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "reporte")
-public class Reporte implements Serializable{
-    @Id
-    @Column(name = "repo_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long repoId;
+@Table(name = "tipo_persona")
+public class TipoPersona implements Serializable{
 
-    @Column(name = "repo_info")
-    String repoInfo;
-    
-    //foreig key = tabla unida
-    @Column(name = "pers_id")
-    String persId;
+    @Id
+    @Column(name = "tipe_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long tipeId;
+
+    @Column(name = "tipe_nombre")
+    String tipeNombre;
 }

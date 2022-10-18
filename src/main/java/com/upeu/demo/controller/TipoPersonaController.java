@@ -4,8 +4,8 @@
  */
 package com.upeu.demo.controller;
 
-import com.upeu.demo.entity.Asistencia;
-import com.upeu.demo.service.AsistenciaService;
+import com.upeu.demo.entity.TipoPersona;
+import com.upeu.demo.service.TipoPersonaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -21,41 +21,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/asistencia")
-@Api(value = "Microservicios de gestion de asistencia", description ="Microservicio de asistencia")
-public class AsistenciaController {
-
+@RequestMapping("/tipo-persona")
+@Api(value = "Microservicios de gestion de tipo persona", description ="Microservicio de tipo persona")
+public class TipoPersonaController {
+    
     @Autowired
-    private AsistenciaService asistenciaService;
+    private TipoPersonaService tipoPersonaService;
 
-    @ApiOperation(value="Lista de asistencia")
+    @ApiOperation(value="Lista de tipo persona")
     @GetMapping("/all")
-    public List<Asistencia> findAll() {
-        return asistenciaService.findAll();
+    public List<TipoPersona> findAll() {
+        return tipoPersonaService.findAll();
     }
 
-    @ApiOperation(value="Obtiene datos de la asistencia")
+    @ApiOperation(value="Obtiene datos de tipo persona")
     @GetMapping("/{id}")
-    public ResponseEntity<Asistencia> findById(@PathVariable Long id) {
-        Asistencia asistencia = asistenciaService.findById(id);
-        return ResponseEntity.ok(asistencia);
+    public ResponseEntity<TipoPersona> findById(@PathVariable Long id) {
+        TipoPersona tipoPersona = tipoPersonaService.findById(id);
+        return ResponseEntity.ok(tipoPersona);
     }
 
-    @ApiOperation(value="Elimina una asistencia")
+    @ApiOperation(value="Elimina un tipo persona")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
-        asistenciaService.deleteById(id);
+        tipoPersonaService.deleteById(id);
     }
 
-    @ApiOperation(value="Crea una asistencia")
+    @ApiOperation(value="Crea un tipo persona")
     @PostMapping("/save")
-    public Asistencia save(@RequestBody Asistencia asistencia) {
-        return asistenciaService.save(asistencia);
+    public TipoPersona save(@RequestBody TipoPersona tipoPersona) {
+        return tipoPersonaService.save(tipoPersona);
     }
 
-    @ApiOperation(value="Modifica una asistencia")
+    @ApiOperation(value="Modifica un tipo persona")
     @PutMapping("/update")
-    public Asistencia update(@RequestBody Asistencia asistencia) {
-        return asistenciaService.save(asistencia);
+    public TipoPersona update(@RequestBody TipoPersona tipoPersona) {
+        return tipoPersonaService.save(tipoPersona);
     }
 }

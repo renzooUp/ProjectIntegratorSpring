@@ -10,8 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -26,12 +25,12 @@ public class Material implements Serializable{
     private Long mateId;
 
     @Column(name = "mate_nombre")
-    String mateNombre;
+    private String mateNombre;
 
     @Column(name = "mate_descripcion")
-    String mateDescripcion;
+    private String mateDescripcion;
 
-    @ManyToOne //De muchos a uno
-    @JoinColumn(name = "tall_id")
+    @OneToOne(mappedBy = "material")
     private Taller taller;
+
 }

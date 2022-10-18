@@ -10,8 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+
+
 
 @Data
 @Entity
@@ -24,17 +28,24 @@ public class Persona implements Serializable{
     private Long persId;
 
     @Column(name = "pers_nombres")
-    String persNombres;
+    private String persNombres;
 
-    @Column(name = "pers_ap_paterno")
-    String persApPaterno;
+    @Column(name = "pers_apellidos")
+    private String persApellidos;
 
-    @Column(name = "pers_ap_materno")
-    String persApMaterno;
+    @Column(name = "pers_dni")
+    private String persDni;
 
-    @Column(name = "pers_celular")
-    String persCelular;
+    @Column(name = "pers_telefono")
+    private String persTelefono;
 
-    @Column(name = "pers_correo")
-    String persCorreo;
+// tabla  persona se relaciona a de tipo persona
+    @ManyToOne //De muchos a uno
+    @JoinColumn(name = "tipe_id")
+    private TipoPersona tipoPersona;
+
+// tabla  persona se relaciona a carrera
+    @ManyToOne //De muchos a uno
+    @JoinColumn(name = "carr_id")
+    private Carrera carrera;
 }

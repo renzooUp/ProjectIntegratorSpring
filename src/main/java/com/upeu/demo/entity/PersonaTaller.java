@@ -5,19 +5,23 @@
 package com.upeu.demo.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "pers_taller")
+@Table(name = "persona_taller")
 public class PersonaTaller implements Serializable{
 
     @Id
@@ -26,16 +30,19 @@ public class PersonaTaller implements Serializable{
     private Long petaId;
 
     @Column(name = "peta_carrera")
-    String petaCarrera;
+    private String petaCarrera;
 
     @Column(name = "peta_ciclo")
-    String petaCiclo;
+    private String petaCiclo;
 
+    // tabla  personaTaller se relaciona a taller
+    //          carga de tipo pereza              cascada a todo
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //De muchos a muchos
+    private List<Taller> taller;
+
+    // tabla  personaTaller se relaciona a persona
     @ManyToOne //De muchos a uno
-    @JoinColumn(name = "tall_id")
-    private Taller taller;
+    @JoinColumn(name = "tipe_id")
+    private Persona persona;
 
-    //Foreig Key - tablas unidas de uno a uno a tabla persona
-    @Column(name = "pers_id")
-    String persId;
 }

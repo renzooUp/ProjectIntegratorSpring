@@ -10,25 +10,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "asistencia")
-public class Asistencia implements Serializable{
-    
+@Table(name = "carrera")
+public class Carrera implements Serializable{
+      
     @Id
-    @Column(name = "asis_id")
+    @Column(name = "carr_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long asisId;
+    private Long carrId;
 
-    @Column(name = "asis_control")
-    String asisControl;
+    @Column(name = "carr_nombre")
+    private String carrNombre;
 
-    @ManyToOne //De muchos a uno
-    @JoinColumn(name = "pers_id")
-    private Persona persona;
+    @Column(name = "carr_ciclo")
+    private String carrCiclo;
+
 }

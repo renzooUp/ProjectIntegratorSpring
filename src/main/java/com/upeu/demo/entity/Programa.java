@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "taller")
+@Table(name = "programa")
 public class Programa implements Serializable{
     @Id
     @Column(name = "prog_id")

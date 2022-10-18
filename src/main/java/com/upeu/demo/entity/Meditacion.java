@@ -24,8 +24,8 @@ public class Meditacion implements Serializable{
     private Long mediId;
 
     @Column(name = "medi_oracion")
-    String mediOracion;
+    private String mediOracion;
 
     @Column(name = "medi_cancion")
-    String mediCancion;
+    private String mediCancion;
 }

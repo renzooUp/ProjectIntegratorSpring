@@ -4,18 +4,18 @@
  */
 package com.upeu.demo.service;
 
-import com.upeu.demo.entity.Asistencia;
+import com.upeu.demo.entity.TipoPersona;
 import java.util.List;
 
-public interface AsistenciaService {
+public interface TipoPersonaService {
 
-    public List<Asistencia> findAll();
+    public List<TipoPersona> findAll();
 
-    public Asistencia findById(Long id);
+    public TipoPersona findById(Long id);
 
-    public Asistencia save(Asistencia asistencia);
+    public TipoPersona save(TipoPersona tipoPersona);
 
-    public void delete(Asistencia asistencia);
+    public void delete(TipoPersona tipoPersona);
 
     public void deleteById(Long id);
 }

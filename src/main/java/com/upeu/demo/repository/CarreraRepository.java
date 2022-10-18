@@ -4,11 +4,11 @@
  */
 package com.upeu.demo.repository;
 
-import com.upeu.demo.entity.Asistencia;
+import com.upeu.demo.entity.Carrera;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AsistenciaRepository extends CrudRepository<Asistencia, Long>{
+public interface CarreraRepository extends CrudRepository<Carrera, Long>{
     
 }
