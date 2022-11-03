@@ -29,11 +29,8 @@ public class PersonaTaller implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long petaId;
 
-    @Column(name = "peta_carrera")
-    private String petaCarrera;
-
-    @Column(name = "peta_ciclo")
-    private String petaCiclo;
+    @Column(name = "peta_asistencia")
+    private char petaAsistencia;
 
     // tabla  personaTaller se relaciona a taller
     //          carga de tipo pereza              cascada a todo
@@ -42,7 +39,8 @@ public class PersonaTaller implements Serializable{
 
     // tabla  personaTaller se relaciona a persona
     @ManyToOne //De muchos a uno
-    @JoinColumn(name = "tipe_id")
+    @JoinColumn(name = "pers_id")
     private Persona persona;
+
 
 }

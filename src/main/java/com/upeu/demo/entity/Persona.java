@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
-
-
 @Data
 @Entity
 @Table(name = "persona")
@@ -30,8 +28,11 @@ public class Persona implements Serializable{
     @Column(name = "pers_nombres")
     private String persNombres;
 
-    @Column(name = "pers_apellidos")
-    private String persApellidos;
+    @Column(name = "pers_ap_paterno")
+    private String persApPaterno;
+
+    @Column(name = "pers_ap_materno")
+    private String persApMaterno;
 
     @Column(name = "pers_dni")
     private String persDni;
@@ -39,12 +40,12 @@ public class Persona implements Serializable{
     @Column(name = "pers_telefono")
     private String persTelefono;
 
-// tabla  persona se relaciona a de tipo persona
+    // tabla  persona se relaciona a de tipo persona
     @ManyToOne //De muchos a uno
     @JoinColumn(name = "tipe_id")
     private TipoPersona tipoPersona;
 
-// tabla  persona se relaciona a carrera
+    // tabla  persona se relaciona a carrera
     @ManyToOne //De muchos a uno
     @JoinColumn(name = "carr_id")
     private Carrera carrera;

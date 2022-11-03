@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/taller")
+@RequestMapping("/api/taller")
 @Api(value = "Microservicios de gestion de taller", description ="Microservicio de taller")
 public class TallerController {
 

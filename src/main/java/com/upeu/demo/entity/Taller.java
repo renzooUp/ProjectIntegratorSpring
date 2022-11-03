@@ -24,22 +24,26 @@ import lombok.Data;
 @Entity
 @Table(name = "taller")
 public class Taller implements Serializable{
+
     @Id
     @Column(name = "tall_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tallId;
 
     @Column(name = "tall_tema")
-    String tallTema;
+    private String tallTema;
 
-    @Column(name = "tall_fecha_inicio")
-    String tallFechaInicio;
+    @Column(name = "tall_hora")
+    private String tallHora;
 
-    @Column(name = "tall_fecha_fin")
-    String tallFechaFin;
+    @Column(name = "tall_fecha")
+    private String tallFecha;
 
-    @Column(name = "tall_horario")
-    String tallHorario;
+    @Column(name = "tall_direccion")
+    private String tallDireccion;
+
+    @Column(name = "tall_lugar")
+    private String tallLugar;
 
     //de taller a programa
     @ManyToOne //De muchos a uno

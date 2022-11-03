@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/meditacion")
+@RequestMapping("/api/meditacion")
 @Api(value = "Microservicios de gestion de meditacion", description ="Microservicio de meditacion")
 public class MeditacionController {
 

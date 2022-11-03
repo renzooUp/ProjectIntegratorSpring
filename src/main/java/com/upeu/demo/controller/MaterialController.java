@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/material")
+@RequestMapping("/api/material")
 @Api(value = "Microservicios de gestion de material", description ="Microservicio de material")
 public class MaterialController {
     

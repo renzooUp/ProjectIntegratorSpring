@@ -26,6 +26,10 @@ public class Meditacion implements Serializable{
     @Column(name = "medi_oracion")
     private String mediOracion;
 
-    @Column(name = "medi_cancion")
-    private String mediCancion;
+    @Column(name = "medi_versiculo")
+    private String mediVersiculo;
+
+    @Column(name = "medi_reflexion")
+    private String mediReflexion;
+
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/programa")
+@RequestMapping("/api/programa")
 @Api(value = "Microservicios de gestion de programa", description ="Microservicio de programa")
 public class ProgramaController {
     

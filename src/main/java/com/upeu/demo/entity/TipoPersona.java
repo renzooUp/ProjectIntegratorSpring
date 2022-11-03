@@ -24,5 +24,5 @@ public class TipoPersona implements Serializable{
     private Long tipeId;
 
     @Column(name = "tipe_nombre")
-    String tipeNombre;
+    private String tipeNombre;
 }
