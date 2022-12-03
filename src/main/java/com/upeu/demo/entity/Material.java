@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
@@ -30,7 +32,10 @@ public class Material implements Serializable{
     @Column(name = "mate_descripcion")
     private String mateDescripcion;
 
-    @OneToOne(mappedBy = "material")
+    //de taller a programa
+    @ManyToOne //De muchos a uno
+    //@JsonIgnore - Ignora esta relación para eso sirve
+    @JoinColumn(name = "tall_id")
     private Taller taller;
 
 }

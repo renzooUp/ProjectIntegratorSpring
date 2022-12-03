@@ -17,6 +17,7 @@ import lombok.Data;
 @Entity
 @Table(name = "programa")
 public class Programa implements Serializable{
+
     @Id
     @Column(name = "prog_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +28,5 @@ public class Programa implements Serializable{
 
     @Column(name = "prog_descripcion")
     String progDescripcion;
+
 }
