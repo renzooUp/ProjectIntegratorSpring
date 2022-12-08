@@ -32,6 +32,9 @@ public class Material implements Serializable{
     @Column(name = "mate_descripcion")
     private String mateDescripcion;
 
+    @Column(name = "mate_tipo_material")
+    private String mateTipoMaterial;
+
     //de taller a programa
     @ManyToOne //De muchos a uno
     //@JsonIgnore - Ignora esta relación para eso sirve
