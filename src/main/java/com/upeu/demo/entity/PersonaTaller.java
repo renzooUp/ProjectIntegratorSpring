@@ -34,8 +34,10 @@ public class PersonaTaller implements Serializable{
 
     // tabla  personaTaller se relaciona a taller
     //          carga de tipo pereza              cascada a todo
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //De muchos a muchos
-    private List<Taller> taller;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //De muchos a muchos
+    @ManyToOne
+    @JoinColumn(name = "tall_id")
+    private Taller taller;
 
     // tabla  personaTaller se relaciona a persona
     @ManyToOne //De muchos a uno
