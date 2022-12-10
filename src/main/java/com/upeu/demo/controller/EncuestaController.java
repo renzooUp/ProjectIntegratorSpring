@@ -4,8 +4,8 @@
  */
 package com.upeu.demo.controller;
 
-import com.upeu.demo.entity.Usuario;
-import com.upeu.demo.service.UsuarioService;
+import com.upeu.demo.entity.Encuesta;
+import com.upeu.demo.service.EncuestaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
@@ -24,77 +24,77 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = {"http://localhost:4200"})/*Hare peticiones a tal ruta externa*/
 @RestController
-@RequestMapping("/api/usuario")
-@Api(value = "Microservicios de gestion de usuarios", description ="Microservicio de usuarios")
-public class UsuarioController {
-
+@RequestMapping("/api/encuesta")
+@Api(value = "Microservicios de gestion de encuesta", description ="Microservicio de encuesta")
+public class EncuestaController {
+    
     @Autowired
-    private UsuarioService usuarioService;
+    private EncuestaService encuestaService;
 
-    @ApiOperation(value="Lista de usuario")
+    @ApiOperation(value="Lista de encuesta")
     @GetMapping()
     public ResponseEntity<?> findAll() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "Lista de usuario");
-        result.put("data", usuarioService.findAll());
+        result.put("message", "Lista de encuestas");
+        result.put("data", encuestaService.findAll());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @ApiOperation(value="Obtiene datos de usuario")
+    @ApiOperation(value="Obtiene datos de la encuesta")
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
-        Usuario usuario = usuarioService.findById(id);
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<Encuesta> findById(@PathVariable Long id) {
+        Encuesta encuesta = encuestaService.findById(id);
+        return ResponseEntity.ok(encuesta);
     }
 
-    @ApiOperation(value="Elimina un taller")
+    @ApiOperation(value="Elimina una encuesta")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         HashMap<String, Object> result = new HashMap<>();
-        Usuario data = usuarioService.findById(id);
+        Encuesta data = encuestaService.findById(id);
         if(data == null){
             result.put("success", false);
-            result.put("message", "No existe usuario con id: " + id);
+            result.put("message", "No existe encuesta con id: " + id);
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }else{
-            usuarioService.deleteById(id);
+            encuestaService.deleteById(id);
             result.put("success", true);
-            result.put("message", "Usuario eliminado correctamente");
+            result.put("message", "Encuesta eliminado correctamente");
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
     }
 
-    @ApiOperation(value="Crea un usuario")
+    @ApiOperation(value="Crea una encuesta")
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> save(@RequestBody Encuesta encuesta) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "Usuario registrado correctamente");
-        result.put("data", usuarioService.save(usuario));
+        result.put("message", "Encuesta registrado correctamente");
+        result.put("data", encuestaService.save(encuesta));
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @ApiOperation(value="Modifica un usuario")
+    @ApiOperation(value="Modifica una encuesta")
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody Encuesta encuesta) {
         HashMap<String, Object> result = new HashMap<>();
-        Usuario data = usuarioService.findById(id);
+        Encuesta data = encuestaService.findById(id);
         if (data == null) {
             result.put("success", false);
             result.put("message", "No existe registro con Id: " + id);
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
         try {
-            usuario.setUsuaId(id);
-            usuarioService.save(usuario);
+            encuesta.setEncuId(id);
+            encuestaService.save(encuesta);
             result.put("success", true);
             result.put("message", "Datos actualizados correctamente.");
-            result.put("data", usuario);
+            result.put("data", encuesta);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(new Exception(ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 }

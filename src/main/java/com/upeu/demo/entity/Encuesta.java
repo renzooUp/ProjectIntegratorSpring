@@ -15,30 +15,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
+
 @Data
 @Entity
-@Table(name = "persona_taller")
-public class PersonaTaller implements Serializable{
+@Table(name = "encuesta")
+public class Encuesta implements Serializable{
 
     @Id
-    @Column(name = "peta_id")
+    @Column(name = "encu_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long petaId;
+    private Long encuId;
 
-    @Column(name = "peta_asistencia")
-    private char petaAsistencia;
+    @Column(name = "encu_respuesta_uno")
+    private String encuRespuestaUno;
 
-    // tabla  personaTaller se relaciona a taller
-    //          carga de tipo pereza              cascada a todo
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //De muchos a muchos
+    @Column(name = "encu_respuesta_dos")
+    private String encuRespuestaDos;
+
+    @Column(name = "encu_respuesta_tres")
+    private String encuRespuestaTres;
+
     @ManyToOne
     @JoinColumn(name = "tall_id")
     private Taller taller;
-
-    // tabla  personaTaller se relaciona a persona
-    @ManyToOne //De muchos a uno
-    @JoinColumn(name = "pers_id")
-    private Persona persona;
-
-
 }

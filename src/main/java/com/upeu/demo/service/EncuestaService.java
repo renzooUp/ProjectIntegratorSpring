@@ -4,18 +4,18 @@
  */
 package com.upeu.demo.service;
 
-import com.upeu.demo.entity.Rol;
+import com.upeu.demo.entity.Encuesta;
 import java.util.List;
 
-public interface RolService {
+public interface EncuestaService {
 
-    public List<Rol> findAll();
+    public List<Encuesta> findAll();
 
-    public Rol findById(Long id);
+    public Encuesta findById(Long id);
 
-    public Rol save(Rol rol);
+    public Encuesta save(Encuesta encuesta);
 
-    public void delete(Rol rol);
+    public void delete(Encuesta encuesta);
 
     public void deleteById(Long id);
 }
