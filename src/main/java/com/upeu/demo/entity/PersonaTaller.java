@@ -26,7 +26,7 @@ public class PersonaTaller implements Serializable{
     private Long petaId;
 
     @Column(name = "peta_asistencia")
-    private char petaAsistencia;
+    private char petaAsistencia = 'F';
 
     // tabla  personaTaller se relaciona a taller
     //          carga de tipo pereza              cascada a todo
