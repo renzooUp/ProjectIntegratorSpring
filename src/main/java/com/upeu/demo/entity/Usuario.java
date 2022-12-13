@@ -4,10 +4,8 @@
  */
 package com.upeu.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,34 +13,42 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
     @Id
     @Column(name = "usua_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuaId;
 
-    @Column(name = "usua_Username")
-    private String usuaUsername;
+    @Column(unique = true, length = 20)
+    private String username;
 
-    @Column(name = "usua_password")
-    private String usuaPassword;
+    @Column(length = 60)
+    private String password;
+    private Boolean enabled;
+    
+    private String nombre;
+    private String apellido;
+    private String email;
 
-    @Column(name = "usua_nombres")
-    private String usuaNombres;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "usuarios_roles", 
+            joinColumns = @JoinColumn(name = "usua_id"), 
+            inverseJoinColumns = @JoinColumn(name = "rol_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"usua_id","rol_id"})})
+    private List<Rol> roles;
 
-    @Column(name = "usua_enabled")
-    private boolean UsuaEnabled = true;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "usuario")
-    @JsonIgnore
-    private Set<UsuarioRol> usuarioRoles = new HashSet<>();
-
+    private static final long serialVersionUID = 1L;
+    
+    
 }
