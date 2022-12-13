@@ -72,7 +72,7 @@ public class PersonaController {
     }
 
     @ApiOperation(value="Modifica una persona")
-    @PutMapping("/update")
+    @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody Persona persona) {
         HashMap<String, Object> result = new HashMap<>();
         Persona data = personaService.findById(id);
