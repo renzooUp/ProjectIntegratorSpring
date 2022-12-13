@@ -22,15 +22,13 @@ import lombok.Data;
 @Entity
 @Table(name = "roles")
 public class Rol implements Serializable{
-
     @Id
-    @Column(name = "role_id")
+    @Column(name = "rol_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
+    private Long rolId;
 
-    @Column(name = "role_nombre")
-    private String roleNombre;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "rol")
-    private Set<UsuarioRol> usuarioRoles = new HashSet<>();
+    @Column(name = "rol_nombre", unique = true, length = 20)
+    private String rolNombre;
+    
+    private static final long serialVersionUID = 1L;
 }
